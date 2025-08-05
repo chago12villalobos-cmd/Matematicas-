@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Muestreo Aleatorio | Versión Móvil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fef7f1;
+      color: #444;
+    }
+
+    header {
+      background-color: #c9d6ff;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    p.description {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 220px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      margin: 10px auto;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #ffb6b9;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #fa9fa4;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background-color: #e0f7fa;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 10px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+
+      input, button {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📋 Muestreo Aleatorio</h1>
+  </header>
+
+  <div class="container">
+    <p class="description">Ponga aca los numeros aleatorios (solo se puede 1000 por que se peta XD) (1 a 1000):</p>
+
+    <input type="number" id="cantidad" min="1" max="1000" placeholder="Cantidad">
+    <button onclick="generarMuestra()">Generar Muestra</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <footer>
+    Power by Tebex.io 📐 | Patron chago
+  </footer>
+
+  <script>
+    function generarMuestra() {
+      let cantidad = parseInt(document.getElementById("cantidad").value);
+      if (isNaN(cantidad) || cantidad < 1 || cantidad > 1000) {
+        alert("Escribe una cantidad válida entre 1 y 1000.");
+        return;
+      }
+
+      let numeros = Array.from({length: 1000}, (_, i) => i + 1);
+      let muestra = [];
+
+      for (let i = 0; i < cantidad; i++) {
+        let index = Math.floor(Math.random() * numeros.length);
+        muestra.push(numeros.splice(index, 1)[0]);
+      }
+
+      document.getElementById("resultado").innerHTML =
+        `<strong>Muestra aleatoria (${cantidad}):</strong><br>${muestra.join(", ")}`;
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+     
+
+
+
+
+
+
+
+
+
+
+
